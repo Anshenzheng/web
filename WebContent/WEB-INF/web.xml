@@ -19,6 +19,34 @@
   </filter>
   <filter-mapping>
   	<filter-name>userFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/a</url-pattern>
+  	<dispatcher>FORWARD</dispatcher>
+  	<dispatcher>INCLUDE</dispatcher>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>ASYNC</dispatcher>
+  	<dispatcher>ERROR</dispatcher>
   </filter-mapping>
+  <filter>
+  	<filter-name>forwardFilter</filter-name>
+  	<filter-class>com.learning.filter.ForwardFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>forwardFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+  	<filter-name>errorFilter</filter-name>
+  	<filter-class>com.learning.filter.ErrorFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>errorFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	
+  	<dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error.jsp</location>
+  </error-page>
 </web-app>
